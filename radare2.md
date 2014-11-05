@@ -41,59 +41,59 @@ There is a easier e interface accessible from the Visual mode, just typing `Ve`
 
 ## Basic Commands
 Command syntax: `[.][times][cmd][~grep][@[@iter]addr!size][|>pipe]`
-`;` Command chaining: `x 3;s+3;pi 3;s+3;pxo 4;`
-`|` Pipe with shell commands: `pd | less`
-`!` Run shell commands: `!cat /etc/passwd`
-`!!` Escapes to shell, run command and pass output to radare buffer
-Note: The double exclamation mark tells radare to skip the plugin list to find an IO plugin handling this command to launch it directly to the shell. A single one will walk through the io plugin list.
-`` ` `` Radare commands: `` wx `!ragg2 -i exec` ``
-`~` grep
-`~[n]` grep by columns `afl~[0]`
-`~:n` grep by rows `afl~:0`
+* `;` Command chaining: `x 3;s+3;pi 3;s+3;pxo 4;`
+* `|` Pipe with shell commands: `pd | less`
+* `!` Run shell commands: `!cat /etc/passwd`
+* `!!` Escapes to shell, run command and pass output to radare buffer
+* Note: The double exclamation mark tells radare to skip the plugin list to find an IO plugin handling this command to launch it directly to the shell. A single one will walk through the io plugin list.
+* `` ` `` Radare commands: `` wx `!ragg2 -i exec` ``
+* `~` grep
+* `~[n]` grep by columns `afl~[0]`
+* `~:n` grep by rows `afl~:0`
 ```
 	pi~mov,eax  		  ; lines with mov or eax
 	pi~mov&eax  		  ; lines with mov and eax
 	pi~mov,eax:6  		  ; 6 first lines with mov or eax
 	pd 20~call[0]:0       ; grep first column of the first row matching 'call'
 ```
-`.cmd` Interprets command output
+* `.cmd` Interprets command output
 ```
 is* prints symbolos
 .is* interprets output and define the symbols in radare (normally they are already loaded if r2 was not invoked with -n)
 ```
-`..` repeats last commands (same as enter \n)
-`(` Used to define and run macros
-`$` Used to define alias
-`$$`: Resolves to current address
-Offsets (`@`) are absolute, we can use $$ for relative ones `@ $$+4`
-`?` Evaluate expression
+* `..` repeats last commands (same as enter \n)
+* `(` Used to define and run macros
+* `$` Used to define alias
+* `$$`: Resolves to current address
+* Offsets (`@`) are absolute, we can use $$ for relative ones `@ $$+4`
+* `?` Evaluate expression
 ```
 [0x00000000]> ? 33 +2
 35 0x23 043 0000:0023 35 00100011 35.0 0.000000
 
 Note: | and & need to be escaped
 ```
-`?$?` Help for variables used in expressions
-`$$`: Here
-`$s`: File size
-`$b`: Block size
-`$l`: Opcode length
-`$j`: When `$$` is at a `jmp`, `$j` is the address where we are going to jump to
-`$f`: Same for `jmp` fail address
-`$m`: Opcode memory reference (e.g. mov eax,[0x10] => 0x10)
-`???` Help for `?` command
-`?i` Takes input from stdin. Eg `?i username`
-`??` Result from previous operations
-`?s from to [step]`: Generates sequence from <from> to <to> every <step>
-`?p`: Get physical address for given virtual address
-`?P`: Get virtual address for given physical one
-`?v` Show hex value of math expr
+* `?$?` Help for variables used in expressions
+* `$$`: Here
+* `$s`: File size
+* `$b`: Block size
+* `$l`: Opcode length
+* `$j`: When `$$` is at a `jmp`, `$j` is the address where we are going to jump to
+* `$f`: Same for `jmp` fail address
+* `$m`: Opcode memory reference (e.g. mov eax,[0x10] => 0x10)
+* `???` Help for `?` command
+* `?i` Takes input from stdin. Eg `?i username`
+* `??` Result from previous operations
+* `?s from to [step]`: Generates sequence from <from> to <to> every <step>
+* `?p`: Get physical address for given virtual address
+* `?P`: Get virtual address for given physical one
+* `?v` Show hex value of math expr
 ```
 ?v 0x1625d4ca ^ 0x72ca4247 = 0x64ef968d
 ?v 0x4141414a - 0x41414140  = 0xa
 ```
-`?l str`: Returns the length of string
-`@@`: Used for iteractions
+* `?l str`: Returns the length of string
+* `@@`: Used for iteractions
 ```
 wx ff @@10 20 30      Writes ff at offsets 10, 20 and 30
 wx ff @@`?s  1 10 2`  Writes ff at offsets 1, 2 and 3
