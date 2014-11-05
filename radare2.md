@@ -37,6 +37,9 @@ e asm.pseudo = true
 
 # Display stack and register values on top of disasembly view (visual mode)
 e cmd.stack = true
+
+# Solarized theme
+ecf solarized
 ```
 
 There is an easier interface accessible from the Visual mode, just typing `Ve`
