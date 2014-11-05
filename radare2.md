@@ -15,7 +15,6 @@
 ```
 
 ## Configuration properties
-They can be set in: `~/.radarerc`
 They can be used in evaluations:`? ${asm.tabs}`
 
 ```
@@ -27,16 +26,19 @@ e <property>=<value>: Change property value
 e? help about a configuration property
 	e? cmd.stack
 ```
-Interesting properties:
+You will want to set your favourite options in `~/.radarerc` since every line there will be interpreted at the beginning of each session. Mine for reference:
 
 ```
-Enable modifying the binary but without saving permanetly the changes
-	e io.cache = 1
-Shows pseudocode in disassembly. Eg mov eax, str.ok = > eax = str.ok
-	e asm.pseudo = true
-Display stack and register values on top of disasembly view (visual mode)
-	e cmd.stack = true
+# Show comments at right of disassembly if they fit in screen
+e asm.cmtright=true
+
+# Shows pseudocode in disassembly. Eg mov eax, str.ok = > eax = str.ok
+e asm.pseudo = true
+
+# Display stack and register values on top of disasembly view (visual mode)
+e cmd.stack = true
 ```
+
 There is an easier interface accessible from the Visual mode, just typing `Ve`
 
 ## Basic Commands
@@ -114,6 +116,12 @@ The block size is the default view size for radare. All commands will work with 
 b size: Change block size
 ```
 
+## JSON Output
+Most of commands such as (i)nfo and (p)rint commands accept a `j` to print their output in `json`
+```
+[0x100000d78]> ij
+{"bin":{"type":"mach0","class":"MACH064","endian":"little","machine":"x86 64 all","arch":"x86","os":"osx","lang":"c","pic":true,"canary":false,"nx":false,"crypto":false,"va":true,"bits":64,"stripped":true,"static":false,"linenums":false,"syms":false,"relocs":false},"core":{"type":"Executable file","os":"osx","arch":"x86 64 all","bits":64,"endian":"little","file":"/bin/ls","fd":6,"size":34640,"mode":"r--","block":256,"uri":"/bin/ls","format":"mach064"}}
+```
 ## Analyze
 ```
 aa: Analyze all (fcns + bbs) same that running r2 with -A
