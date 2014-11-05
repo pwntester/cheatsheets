@@ -37,7 +37,7 @@ Shows pseudocode in disassembly. Eg mov eax, str.ok = > eax = str.ok
 Display stack and register values on top of disasembly view (visual mode)
 	e cmd.stack = true
 ```
-There is a easier e interface accessible from the Visual mode, just typing `Ve`
+There is an easier interface accessible from the Visual mode, just typing `Ve`
 
 ## Basic Commands
 Command syntax: `[.][times][cmd][~grep][@[@iter]addr!size][|>pipe]`
