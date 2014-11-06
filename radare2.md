@@ -347,6 +347,11 @@ Opcodes: 5589e5
 
 pi 5 @@hit* (Print 5 first instructions of every hit)
 ```
+Its possible to run a command for each hit. Use the `cmd.hit` property:
+
+```
+e cmd.hit=px
+```
 
 ## Comments and defines
 ```
@@ -384,8 +389,29 @@ search.in
 
 ## Yara
 Yara can also be used for detecting file signatures to determine compiler types, shellcodes, protections and more.
+
 ```
 :yara scan
+```
+
+## Zignatures
+Zignatures are useful when dealing with stripped binaries. We can take a non-stripped binary, run zignatures on it and apply it to a different binary that was compiled statically with the same libraries.
+
+```
+zg <language> <output file>: Generate signatures
+	eg: zg go go.z
+Run the generated script to load signatures
+	eg: . go.z
+z: To show signatures loaded:
+```
+Zignatures are applied as comments:
+
+```
+r2-(pid2)> pd 35 @ 0x08049adb-10
+|          0x08049adb   call fcn.0805b030
+|             fcn.0805b030(unk, unk, unk, unk) ; sign.sign.b.sym.fmt.Println
+|          0x08049ae0   add esp, 0xc
+|          0x08049ae3   call fcn.08095580
 ```
 
 ## Compare files
