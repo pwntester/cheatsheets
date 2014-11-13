@@ -40,6 +40,9 @@ e cmd.stack = true
 
 # Solarized theme
 ecf solarized
+
+# Use UTF-8 to show cool arrows that do not look like crap :)
+e scr.utf8 = true
 ```
 
 There is an easier interface accessible from the Visual mode, just typing `Ve`
@@ -53,6 +56,7 @@ Command syntax: `[.][times][cmd][~grep][@[@iter]addr!size][|>pipe]`
 * Note: The double exclamation mark tells radare to skip the plugin list to find an IO plugin handling this command to launch it directly to the shell. A single one will walk through the io plugin list.
 * `` ` `` Radare commands: `` wx `!ragg2 -i exec` ``
 * `~` grep
+* `~!` grep -v
 * `~[n]` grep by columns `afl~[0]`
 * `~:n` grep by rows `afl~:0`
 ```
@@ -362,7 +366,7 @@ Cf [size]: Define as struct
 	We can define structures to be shown in the disassmbly
 CC: List all comments or add a new comment in console mode
 	C* Show all comments/metadata
-	C <comment> add new comment
+	CC <comment> add new comment
 	CC- remove comment
 ```
 
