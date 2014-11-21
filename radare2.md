@@ -26,7 +26,7 @@ e <property>=<value>: Change property value
 e? help about a configuration property
 	e? cmd.stack
 ```
-You will want to set your favourite options in `~/.radarerc` since every line there will be interpreted at the beginning of each session. Mine for reference:
+You will want to set your favourite options in `~/.radare2rc` since every line there will be interpreted at the beginning of each session. Mine for reference:
 
 ```
 # Show comments at right of disassembly if they fit in screen
