@@ -523,7 +523,7 @@ continue with F9
 =H: Start server and browser
 ```
 
-# Radare2 suite commandRadare2 suite commands
+# Radare2 suite commands
 All suite commands include a `-r` flag to generate instructions for r2
 
 ## rax2 - Base conversion
