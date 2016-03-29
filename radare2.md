@@ -6,7 +6,7 @@
 -q: Exit after processing commands
 -w: Write mode enabled
 -i: Interprets a r2 script
--A: Analize executable at load time (xrefs, etc)
+-A: Analyze executable at load time (xrefs, etc)
 -n: Bare load. Do not load executable info as the entrypoint
 -c'cmds': Run r2 and execute commands (eg: r2 -wqc'wx 3c @ main')
 -p: Creates a project for the file being analyzed (CC add a comment when opening a file as a project)
