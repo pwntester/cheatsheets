@@ -613,3 +613,23 @@ r2 -b 32 -d rarun2 program=pwn1 arg1=$(ragg2 -P 300 -r) : runs pwn1 with a De Br
 r2 -d rarun2 program=/bin/ls stdin=$(python exploit.py) : runs /bin/ls with the output of exploit.py directed to stdin
 ```
 
+## r2pm - Radare2 Package Manager will install external plugins, tools and extras. 
+```
+Usage: r2pm [cmd] [...]
+Commands:
+ -i,info                 r2pm -i # pkgs info
+ -i,install <pkgname>    r2pm -i baleful
+ -u,uninstall <pkgname>  r2pm -u baleful (-uu to force)
+ -l,list                 list installed pkgs
+ -lu                     list uninstalled packages
+ -t,test FX,XX,BR BID    check in travis regressions
+ -s,search [<keyword>]   search in database
+ -v,version              show version
+ -h,help                 show this message
+ -c,clean                clear source cache
+```
+```
+r2pm -i r2pipe-go : runs r2pm and installs r2pipe API for Go
+r2pm -i bokken    : runs r2pm and installs Bokken GUI
+
+```
