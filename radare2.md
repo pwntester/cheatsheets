@@ -202,7 +202,7 @@ pxw n @ offset: Print hexdump of n words
 	pxw size@offset  prints hexadecimal words at address
 pd n @ offset: Print n opcodes disassambled
 pD n @ offset: Print n bytes disassembled
-pi n @ offset: Print n instructions disassambeled (no address, XREFs, etc. just instrunctions)
+pi n @ offset: Print n instructions disassambeled (no address, XREFs, etc. just instructions)
 pdf @ offset: Print disassembled function
 	pdf~XREF (grep: XREFs)
 	pdf~call (grep: calls)
